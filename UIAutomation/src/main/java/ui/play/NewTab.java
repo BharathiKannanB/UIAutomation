@@ -11,11 +11,12 @@ import org.openqa.selenium.support.Color;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class ChromeOptionsModule {
+public class NewTab {
 
 	public static void main(String[] args) {
 		//System.setProperty("webdriver.chrome.driver",".//driver/chromedriver.exe");
-		WebDriverManager.chromedriver().setup();
+		//WebDriverManager.chromedriver().setup();
+		  System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
 		ChromeDriver driver = new ChromeDriver();
 
 		
@@ -23,6 +24,13 @@ public class ChromeOptionsModule {
 		String text = driver.findElement(By.xpath(("//span[text()='Herbal Tea']"))).getCssValue("color");
 		System.out.println(text);
 		driver.get("http://www.practiceselenium.com/");
+
+		
+		
+		WebDriver newWindow = driver.switchTo().newWindow(WindowType.WINDOW);
+		newWindow.get("http://www.linkedin.com/");
+		WebDriver newTab = driver.switchTo().newWindow(WindowType.TAB);
+		newWindow.get("http://www.linkedin.com/");
 		
 	}
 
