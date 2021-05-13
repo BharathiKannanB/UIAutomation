@@ -25,24 +25,17 @@ public class NewTest {
   @Test
   public void testEasy(){	
 	  
-		driver.get("http://www.practiceselenium.com/");  
-		String title = driver.getTitle();	
-		System.out.println(title);
-		WebElement wbelement = driver.findElement(By.xpath("//span[@class='editor_sidebartop']"));
-		try {
-			//File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			File screenshot = wbelement.getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(screenshot, new File("C:\\Users\\bhara\\git\\UIAutomation\\UIAutomation\\UIAutomation\\test.png"));
-		}  catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Assert.assertTrue(title.contains("Welcome")); 		
+	  
+	  	driver.get("http://www.practiceselenium.com/");
+		String text = driver.findElement(By.xpath(("//span[text()='Herbal Tea']"))).getCssValue("color");
+		System.out.println(text);
+		driver.get("http://www.practiceselenium.com/");
 		
 	}	
 	@BeforeTest
 	public void beforeTest() {
-		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+		WebDriverManager.chromedriver().setup();
 	    driver = new ChromeDriver();  
 	}		
 	@AfterTest
